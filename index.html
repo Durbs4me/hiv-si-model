@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HIV SI Model | Symbiotic Intelligence</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <!-- Authentication Overlay -->
+  <div id="authOverlay" class="overlay">
+    <div class="auth-card">
+      <h2>Welcome to the Lab</h2>
+      <p>
+        This platform presents a <strong>most plausible theoretical model</strong>
+        for HIV intervention. Registration is required.
+      </p>
+      <input type="email" id="userEmail" placeholder="Email address" />
+      <input type="password" id="userPass" placeholder="Password" />
+      <button onclick="mockRegister()">Enter</button>
+      <p class="sass-note" id="authSass"></p>
+    </div>
+  </div>
+
+  <!-- Main Application -->
+  <div class="container hidden" id="mainApp">
+    <header>
+      <div class="logo">
+        HIV SI Model <span>v1.0</span>
+      </div>
+
+      <div class="mode-toggle">
+        <span id="modeLabel">Casual Mode</span>
+        <label class="switch">
+          <input type="checkbox" id="modeSwitch" onchange="toggleMode()" />
+          <span class="slider round"></span>
+        </label>
+        <button class="admin-btn" onclick="showAdmin()">Pioneer Panel</button>
+      </div>
+    </header>
+
+    <section class="narrative">
+      <p>
+        We do not claim a cure.  
+        We present a <strong>most plausible theoretical solution</strong>,
+        offered openly for scrutiny, testing, and falsification.
+      </p>
+    </section>
+
+    <div class="dashboard">
+      <aside class="controls">
+        <h3>Simulation Controls</h3>
+
+        <div id="proControls" class="disabled-overlay">
+          <p class="lock-msg">🔒 Professional Access Required</p>
+
+          <label>Therapy Start Day</label>
+          <input type="range" id="therapyStart" min="0" max="100" value="30" />
+
+          <label>Release Efficiency</label>
+          <input type="range" id="releaseRate" min="0" max="1" step="0.01" value="0.1" />
+
+          <label>Payload Type</label>
+          <select id="payloadType">
+            <option value="siRNA">siRNA</option>
+            <option value="CRISPR">CRISPR</option>
+            <option value="ARV">ARV</option>
+          </select>
+        </div>
+
+        <button class="run-btn" onclick="runSimulation()">Run Model</button>
+        <button class="pro-request-btn" id="proBtn" onclick="requestPro()">
+          Apply for Professional Access
+        </button>
+      </aside>
+
+      <main class="visuals">
+        <canvas id="hivChart"></canvas>
+      </main>
+    </div>
+  </div>
+
+  <!-- Admin Overlay -->
+  <div id="adminPanel" class="overlay hidden">
+    <div class="auth-card">
+      <h2>Pioneer Dashboard</h2>
+      <div id="pendingList"></div>
+      <button onclick="hideAdmin()">Return to Lab</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
